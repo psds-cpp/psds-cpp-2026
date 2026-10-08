@@ -1,0 +1,45 @@
+name: Run Tests
+
+on:
+  workflow_call:
+    inputs:
+      args:
+        description: 'Arguments to run_tests.sh, for example "week_02" or "--changed [<sha>]"'
+        type: string
+        default: ''
+      week:
+        description: 'Week, for example week_01'
+        type: string
+        default: ''
+      task:
+        description: 'Task in week; empty or "all" — all tasks in week'
+        type: string
+        default: ''
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # history is needed for changed files
+
+      - name: Install compiler and CMake
+        run: |
+          sudo apt install -y cmake build-essential g++-14 libgtest-dev libgmock-dev
+          sudo apt install -y clang-format-20 || sudo apt install -y clang-format
+
+      - name: Build and run tests
+        env:
+          ARGS: ${{ inputs.args }}
+          WEEK: ${{ inputs.week }}
+          TASK: ${{ inputs.task }}
+        run: |
+          if [[ -n "$WEEK" ]]; then
+            if [[ -z "$TASK" || "$TASK" == all ]]; then
+              ARGS="$WEEK"
+            else
+              ARGS="$TASK"
+            fi
+          fi
+          bash run_tests.sh $ARGS

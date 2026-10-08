@@ -1,0 +1,32 @@
+name: Testing Tasks Week 01
+
+env:
+  WEEK: &week week_01
+
+on:
+  workflow_dispatch:
+    inputs:
+      tasks:
+        description: 'Select tasks to test'
+        required: true
+        type: choice
+        default: 'all'
+        options:
+          - all
+          - addition
+          - rms
+          - print_bits
+          - check_flags
+          - length_lit
+          - quadratic
+          - char_changer
+
+  schedule:
+    - cron: '59 20 16 10 *'  # UTC: 20:59 = 23:59 MSK 16 October
+
+jobs:
+  test:
+    uses: ./.github/workflows/run_tests.yml
+    with:
+      week: *week
+      task: ${{ github.event_name == 'schedule' && 'all' || inputs.task }}

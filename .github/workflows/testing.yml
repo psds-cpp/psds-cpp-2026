@@ -1,0 +1,21 @@
+name: Testing Tasks
+
+on:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Week for testing'
+        type: choice
+        default: all
+        options:
+          - all
+          - week_01
+
+jobs:
+  test:
+    uses: ./.github/workflows/run_tests.yml
+    with:
+      args: ${{ github.event_name == 'push' && format('--changed {0}', github.event.before) || inputs.target }}
