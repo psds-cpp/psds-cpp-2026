@@ -1,0 +1,35 @@
+{
+  "week_01": {
+    "deadline": "2026-10-16 23:59",
+    "tasks": {
+      "addition": {
+        "max_score": 100,
+        "description": "Сложение чисел"
+      },
+      "rms": {
+        "max_score": 100,
+        "description": "Вычисление RMS"
+      },
+      "print_bits": {
+        "max_score": 100,
+        "description": "Битовое представление числа"
+      },
+      "check_flags": {
+        "max_score": 100,
+        "description": "Флаги битовой маски"
+      },
+      "length_lit": {
+        "max_score": 100,
+        "description": "Пользовательские литералы длины"
+      },
+      "quadratic": {
+        "max_score": 200,
+        "description": "Решение квадратного уравнения"
+      },
+      "char_changer": {
+        "max_score": 300,
+        "description": "Изменение символов"
+      }
+    }
+  }
+}
