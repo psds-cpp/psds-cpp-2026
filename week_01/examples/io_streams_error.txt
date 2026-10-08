@@ -1,0 +1,2 @@
+Error in pair 1: Cannot divide 15 by zero!
+Error in pair 4: Cannot divide 100 by zero!
