@@ -8,7 +8,7 @@
 
 TEST(AdditionTest, FunctionSignature) {
     static_assert(std::is_same_v<decltype(&Addition), int64_t (*)(int, int)>,
-        "function must have signature: int64_t Sum(int, int)");
+        "function must have signature: int64_t Addition(int, int)");
 }
 
 TEST(AdditionTest, Simple) {

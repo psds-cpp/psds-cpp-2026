@@ -22,21 +22,7 @@ std::string CaptureOutput(void (*func)(long long, size_t), long long value, size
 }
 
 fs::path FindSourceCode() {
-    std::vector<fs::path> search_paths = {
-        "01_week/tasks/print_bits/print_bits.cpp",
-        "tasks/print_bits/print_bits.cpp",
-        "print_bits/print_bits.cpp",
-        "print_bits.cpp",
-        "tasks/print_bits.cpp"
-    };
-
-    for (const auto& path : search_paths) {
-        if (fs::exists(path) && fs::is_regular_file(path)) {
-            return fs::absolute(path);
-        }
-    }
-
-    return {};
+    return fs::path(__FILE__).parent_path() / "print_bits.cpp";
 }
 
 TEST(CodeInspectionTest, NoBitsetInCode) {
