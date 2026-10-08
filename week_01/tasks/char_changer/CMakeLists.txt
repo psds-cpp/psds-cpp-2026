@@ -1,0 +1,1 @@
+add_gtest(test_char_changer test.cpp)

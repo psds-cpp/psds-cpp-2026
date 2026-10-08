@@ -1,0 +1,7 @@
+add_subdirectory(addition)
+add_subdirectory(rms)
+add_subdirectory(print_bits)
+add_subdirectory(check_flags)
+add_subdirectory(length_lit)
+add_subdirectory(quadratic)
+add_subdirectory(char_changer)

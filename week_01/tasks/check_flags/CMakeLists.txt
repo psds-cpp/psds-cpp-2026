@@ -1,0 +1,1 @@
+add_gtest(test_check_flags test.cpp)
