@@ -1,7 +1,7 @@
-#include <iostream> // включение заголовочного файла ввод-вывод
+#include <iostream> // включение заголовочного файла ввода-вывода
 
 // функция, с которой начинается исполнение программы
 int main() {
-    std::cout << "Hello and welcome to C++" << std::endl;
+    std::cout << "I wait your unbelievable code here" << std::endl;
     return 0; // возвращаемое значение функции
 }
