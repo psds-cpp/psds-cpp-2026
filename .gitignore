@@ -1,0 +1,20 @@
+# build outputs
+build/
+build-*/
+*/build/
+*cmake-build*
+
+# executable
+*.out
+*.exe
+
+# IDE
+.vscode/
+.idea/
+.vs/
+
+# testing
+Testing/
+
+# main.cpp
+/main.cpp
