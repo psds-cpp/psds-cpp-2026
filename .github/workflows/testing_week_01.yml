@@ -6,7 +6,7 @@ env:
 on:
   workflow_dispatch:
     inputs:
-      tasks:
+      task:
         description: 'Select tasks to test'
         required: true
         type: choice
