@@ -1,0 +1,43 @@
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++20
+
+# Ширина строки
+ColumnLimit: 120
+
+# Отступы
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 8
+AccessModifierOffset: -4          # public:/private: на уровне class
+IndentCaseLabels: true            # case сдвинут внутри switch
+NamespaceIndentation: None
+IndentWrappedFunctionNames: true
+AlignAfterOpenBracket: DontAlign
+
+# Фигурные скобки
+BreakBeforeBraces: Attach
+
+# Указатели и ссылки рядом с типом: int* p, const std::string& s
+PointerAlignment: Left
+ReferenceAlignment: Pointer
+
+# Короткие конструкции
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortLambdasOnASingleLine: All
+
+# Шаблоны: template<typename T> на отдельной строке
+AlwaysBreakTemplateDeclarations: Yes
+SpaceAfterTemplateKeyword: false
+
+# Прочее
+SortIncludes: Never
+IncludeBlocks: Preserve
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 2
+FixNamespaceComments: true
