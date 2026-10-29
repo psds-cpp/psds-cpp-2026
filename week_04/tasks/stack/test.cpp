@@ -1,7 +1,5 @@
 #include <gtest/gtest.h>
 
-#include <random>
-
 #include "stack.cpp"
 
 

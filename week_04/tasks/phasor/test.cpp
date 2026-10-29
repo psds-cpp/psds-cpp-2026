@@ -2,6 +2,8 @@
 
 #include <cmath>
 #include <numbers>
+#include <sstream>
+#include <string>
 
 #include "phasor.cpp"
 
@@ -196,7 +198,7 @@ TEST(PhasorTest, PhaseNormalization) {
 }
 
 TEST(PhasorTest, Synonyms) {
-    Phasor p(3.0, 4.0,AlgTag{});
+    Phasor p(3.0, 4.0, AlgTag{});
     EXPECT_DOUBLE_EQ(p.Magnitude(), p.Abs());
     EXPECT_DOUBLE_EQ(p.Phase(), p.Angle());
     EXPECT_DOUBLE_EQ(p.PhaseDeg(), p.AngleDeg());
@@ -214,7 +216,7 @@ TEST(PhasorTest, SetPolar) {
 
 TEST(PhasorTest, SetCartesian) {
     Phasor p;
-    p.SetCartesian(1.0, sqrt(3.0));
+    p.SetCartesian(1.0, std::sqrt(3.0));
 
     EXPECT_NEAR(p.Magnitude(), 2.0, EPS);
     EXPECT_NEAR(p.Phase(), pi / 3, EPS);
@@ -295,8 +297,8 @@ TEST(MathPhasorTest, CompoundAssignment) {
     EXPECT_DOUBLE_EQ(p1.Imag(), 3.0);
 
     p1 *= Phasor(2.0, 0.0, DegTag{});
-    EXPECT_NEAR(p1.Magnitude(), 2.0 * sqrt(13.0), EPS);
-    EXPECT_DOUBLE_EQ(p1.Phase(), atan2(3.0, 2.0));
+    EXPECT_NEAR(p1.Magnitude(), 2.0 * std::sqrt(13.0), EPS);
+    EXPECT_DOUBLE_EQ(p1.Phase(), std::atan2(3.0, 2.0));
 
     p1 /= Phasor(2.0, 0.0, DegTag{});
     EXPECT_NEAR(p1.Magnitude(), std::sqrt(13.0), EPS);
@@ -354,7 +356,7 @@ TEST(MathPhasorTest, ScalarDivision) {
 }
 
 TEST(PhasorTest, Conjugate) {
-    Phasor p(3.0, 4.0,AlgTag{});
+    Phasor p(3.0, 4.0, AlgTag{});
     Phasor conj = p.Conj();
 
     EXPECT_DOUBLE_EQ(conj.Real(), p.Real());
@@ -439,7 +441,7 @@ TEST(MathPhasorTest, ComplexCalculations) {
 
 TEST(MathPhasorTest, CommutativeProperty) {
     Phasor p1(2.0, 3.0, AlgTag{});
-    Phasor p2(4.0, 5.0,AlgTag{});
+    Phasor p2(4.0, 5.0, AlgTag{});
 
     EXPECT_TRUE(p1 + p2 == p2 + p1);
     EXPECT_TRUE(p1 * p2 == p2 * p1);
