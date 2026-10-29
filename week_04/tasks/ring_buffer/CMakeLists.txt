@@ -1,0 +1,1 @@
+add_gtest(test_ring_buffer test.cpp)

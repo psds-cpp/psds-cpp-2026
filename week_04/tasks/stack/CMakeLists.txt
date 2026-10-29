@@ -1,0 +1,1 @@
+add_gtest(test_stack test.cpp)
