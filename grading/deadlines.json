@@ -1,4 +1,26 @@
 {
+  "week_04": {
+    "deadline": "2026-11-06 23:59",
+    "tasks": {
+      "stack": {
+        "max_score": 100,
+        "description": "Стек"
+      },
+      "queue": {
+        "max_score": 200,
+        "description": "Очередь"
+      },
+      "ring_buffer": {
+        "max_score": 300,
+        "description": "Кольцевой буфер"
+      },
+      "phasor": {
+        "max_score": 400,
+        "description": "Комплексная амплитуда"
+      }
+    }
+  },
+
   "week_03": {
     "deadline": "2026-10-30 23:59",
     "tasks": {
