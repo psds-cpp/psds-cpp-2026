@@ -16,6 +16,7 @@ on:
           - week_02
           - week_03
           - week_04
+          - week_05
 
 jobs:
   test:

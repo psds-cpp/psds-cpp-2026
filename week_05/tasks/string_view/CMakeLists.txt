@@ -1,0 +1,1 @@
+add_gtest_asan(test_string_view test.cpp)

@@ -1,4 +1,26 @@
 {
+  "week_05": {
+    "deadline": "2026-11-13 23:59",
+    "tasks": {
+      "tracer": {
+        "max_score": 100,
+        "description": "Трассировщик"
+      },
+      "string_view": {
+        "max_score": 200,
+        "description": "Представление строки"
+      },
+      "cow_string": {
+        "max_score": 300,
+        "description": "Коровья строка"
+      },
+      "simple_vector": {
+        "max_score": 400,
+        "description": "Простой вектор"
+      }
+    }
+  },
+
   "week_04": {
     "deadline": "2026-11-06 23:59",
     "tasks": {

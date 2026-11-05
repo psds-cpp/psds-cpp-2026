@@ -1,0 +1,4 @@
+add_subdirectory(tracer)
+add_subdirectory(string_view)
+add_subdirectory(cow_string)
+add_subdirectory(simple_vector)

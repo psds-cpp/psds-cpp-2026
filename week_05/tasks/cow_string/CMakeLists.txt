@@ -1,0 +1,1 @@
+add_gtest_asan(test_cow_string test.cpp)
