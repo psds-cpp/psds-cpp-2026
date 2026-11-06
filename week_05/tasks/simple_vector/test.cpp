@@ -88,7 +88,9 @@ TEST(SimpleVectorTest, SelfCopyAssignment) {
     SimpleVector v1 = {1, 2, 3};
     auto cap = v1.Capacity();
 
-    v1 = v1;
+    // v1 = v1; // clang -Werror,-Wself-assign-overloaded
+    SimpleVector& self = v1;
+    v1 = self;
 
     EXPECT_EQ(v1.Capacity(), cap);
     EXPECT_EQ(v1.Size(), 3);
@@ -184,7 +186,8 @@ TEST(SimpleVectorTest, Insert) {
         EXPECT_EQ(v[i], static_cast<int>(i));
     }
 
-    int* result = v.Insert(v.Data() - 1, 100);
+    SimpleVector other = {7, 8, 9};
+    int* result = v.Insert(other.Data(), 100);
     EXPECT_EQ(v.Size(), 6);
     for (size_t i = 0; i < v.Size(); ++i) {
         EXPECT_EQ(v[i], static_cast<int>(i));

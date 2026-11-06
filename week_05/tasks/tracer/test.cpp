@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include <utility>
 #include <vector>
 
 #include "tracer.cpp"
@@ -73,7 +74,7 @@ TEST_F(TracerTest, CopyConstructor) {
 }
 
 TEST_F(TracerTest, MoveConstructor) {
-    Tracer original("OriginalWithLongString");
+    Tracer original("OriginalWithLongStringToAvoidSSO");
     int original_id = original.Id();
     const char* original_ptr = original.Data();
     std::string original_name = original.Name();
@@ -94,7 +95,7 @@ TEST_F(TracerTest, MoveConstructor) {
 
 TEST_F(TracerTest, CopyAssignment) {
     Tracer a("Apple");
-    Tracer b("BananaBombaOuououou");
+    Tracer b("BananaBombaOuouououououou");
 
     int a_id = a.Id();
     int b_id = b.Id();
@@ -116,7 +117,7 @@ TEST_F(TracerTest, CopyAssignment) {
 
 TEST_F(TracerTest, MoveAssignment) {
     Tracer a("Apple");
-    Tracer b("BananaBombaFlySoGreat");
+    Tracer b("BananaBombFliesSoPerfectly");
 
     int a_id = a.Id();
     int b_id = b.Id();
@@ -145,7 +146,9 @@ TEST_F(TracerTest, SelfAssignmentCopy) {
     const char* original_ptr = obj.Data();
     int original_id = obj.Id();
 
-    obj = obj;
+    // obj = obj; // clang -Werror,-Wself-assign-overloaded
+    Tracer& self = obj;
+    obj = self;
 
     EXPECT_EQ(obj.Id(), original_id);
     EXPECT_EQ(obj.Name(), original_name);
@@ -190,7 +193,7 @@ TEST_F(TracerTest, VectorPushBackMove) {
     std::vector<Tracer> vec;
     vec.reserve(3);
 
-    Tracer obj("LongNameToAvoidSSO");
+    Tracer obj("LongStringNameToAvoidSSO");
     const char* obj_ptr = obj.Data();
     std::string obj_name = obj.Name();
 
@@ -345,7 +348,7 @@ TEST_F(TracerTest, TemporaryObjectInExpression) {
 
 TEST_F(TracerTest, StdSwapUsesMoveOperations) {
     Tracer a("ThisNameRequireLongStringToAvoidSSO");
-    Tracer b("LongStringToAvoidSSO");
+    Tracer b("LongStringNameToAvoidSSO");
     std::string name_a = a.Name();
     std::string name_b = b.Name();
 

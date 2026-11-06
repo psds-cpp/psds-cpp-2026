@@ -1,5 +1,8 @@
 #include <gtest/gtest.h>
 
+#include <utility>
+#include <vector>
+
 #include "cow_string.cpp"
 
 TEST(CowStringTest, DefaultConstructor) {
@@ -70,7 +73,9 @@ TEST(CowStringTest, CopyAssignment_SelfAssignment) {
     CowString s("Hello");
     const char* original_ptr = s.ToCstr();
 
-    s = s;
+    // s = s; // clang -Werror,-Wself-assign-overloaded
+    CowString& self = s;
+    s = self;
 
     EXPECT_EQ(s.ToCstr(), original_ptr);
     EXPECT_STREQ(s.ToCstr(), "Hello");
